@@ -12,18 +12,26 @@
     />
 </head>
 <body>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    <a href="./index.php" >
-    <button
+    <form action="" method="POST">
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="note" rows="3"></textarea>
+    <button 
       class="btn pmd-btn-fab pmd-ripple-effect btn-primary pmd-btn-raised"
-      type="button"
+      name="submit"
+      type="submit"
     >
-      Add a note
+      Add note
     </button>
-  </a>
+    <?php 
+    if (isset($_POST["submit"])) {
+      include "databaseConnect.php";
+      $note=$_POST["note"];
+      $query ='INSERT INTO lesnotes(note) VALUES("'.$note.'");';
+      $result = mysqli_query($conn, $query);
+      header("Location: ./index.php");
+    }
+      
+    ?>
+  </form>
 </body>
 </html>
 
-
-<?php
-echo "add note page";
