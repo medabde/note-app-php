@@ -1,3 +1,4 @@
+<?php include "session.php"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +11,14 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
 </head>
+<?php include "databaseConnect.php";
+  $query= 'SELECT note FROM lesnotes WHERE ID='.$_GET["id"].';';
+  $result= mysqli_query($conn, $query);
+  $row = $result->fetch_assoc();
+?>
 <body>
     <form action="" method="POST">
-    <textarea class="form-control" id="exampleFormControlTextarea1" name="note" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="note" rows="3"><?= $row["note"]?></textarea>
     <button 
       class="btn pmd-btn-fab pmd-ripple-effect btn-primary pmd-btn-raised"
       name="submit"
@@ -22,7 +28,6 @@
     </button>
     <?php 
     if (isset($_POST["submit"])) {
-      include "databaseConnect.php";
       $note=$_POST["note"];
       $query ='UPDATE lesnotes SET note="'.$note.'" WHERE ID="'.$_GET["id"].'"';
       $result = mysqli_query($conn, $query);

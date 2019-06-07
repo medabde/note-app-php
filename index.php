@@ -1,3 +1,4 @@
+<?php include "session.php"?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,5 +56,15 @@
       + Add a note
     </button>
   </a>
+
+  <a href="./logout.php" >
+    <button
+      class="btn pmd-btn-fab pmd-ripple-effect btn-primary pmd-btn-raised"
+      type="button"
+    >
+      Disconnect
+    </button>
+  </a>
+
   </body>
 </html>
