@@ -54,6 +54,15 @@ $error = "Username or Password is invalid";
 </form>
 
 <?php echo $error;?>
+<br>
+<a href="./register.php" >
+    <button
+      class="btn pmd-btn-fab pmd-ripple-effect btn-primary pmd-btn-raised"
+      type="button"
+    >
+      register
+    </button>
+  </a>
 
 
 </body>

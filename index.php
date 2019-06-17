@@ -25,7 +25,9 @@
       <tbody>
         <?php
     include "databaseConnect.php";
-    $query= "SELECT ID, note FROM lesnotes";
+    $query = 'SELECT id FROM users WHERE email="'.$user_check.'";';
+    $result = mysqli_query($conn, $query);
+    $query= 'SELECT ID, note FROM lesnotes WHERE iduser="'.$result->fetch_assoc()["id"].'"';
     $i=1;
     $result=mysqli_query($conn,$query);
     while($row = $result->fetch_assoc()) {?>

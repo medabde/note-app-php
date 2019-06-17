@@ -25,11 +25,12 @@
     if (isset($_POST["submit"])) {
       include "databaseConnect.php";
       $note=$_POST["note"];
-      $query ='INSERT INTO lesnotes(note) VALUES("'.$note.'");';
+      $query = 'SELECT id FROM users WHERE email="'.$user_check.'";';
+      $result = mysqli_query($conn, $query);
+      $query ='INSERT INTO lesnotes(note,iduser) VALUES("'.$note.'","'.$result->fetch_assoc()["id"].'");';
       $result = mysqli_query($conn, $query);
       header("Location: ./index.php");
     }
-      
     ?>
   </form>
 </body>
